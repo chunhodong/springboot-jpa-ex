@@ -10,7 +10,8 @@ import javax.persistence.Embeddable;
 @Setter
 public class Address {
 
-    private Long id;
+    private String city;
+    private String street;
+    private String zipcode;
 
-    private String name;
 }

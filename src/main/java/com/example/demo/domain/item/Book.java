@@ -1,8 +1,16 @@
 package com.example.demo.domain.item;
 
 import jdk.jfr.Enabled;
+import lombok.Getter;
+import lombok.Setter;
 
-@Enabled
+import javax.persistence.DiscriminatorValue;
+import javax.persistence.Entity;
+
+@Entity
+@Getter
+@Setter
+@DiscriminatorValue("B")
 public class Book extends Item{
 
     private String author;
