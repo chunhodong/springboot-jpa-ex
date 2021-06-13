@@ -1,5 +1,6 @@
 package com.example.demo.service;
 
+import com.example.demo.domain.item.Book;
 import com.example.demo.domain.item.Item;
 import com.example.demo.repository.ItemRepository;
 import lombok.RequiredArgsConstructor;
@@ -19,6 +20,16 @@ public class ItemService {
     @Transactional
     public void saveItem(Item item){
         itemRepository.save(item);
+    }
+
+    //트랜잭션이 자동으로 commit함
+    @Transactional
+    public void updateItem(Long itemId, Book bookParam){
+        Item findItem = itemRepository.findOne(itemId);
+        //update시 조회후 변경된 데이터만 수정해주면
+        //jpa가 트랜잭션commit시 자동을 변경을 감지하고 update쿼리를 전송
+        findItem.setPrice(bookParam.getPrice());
+
     }
 
     public List<Item> findItems(){

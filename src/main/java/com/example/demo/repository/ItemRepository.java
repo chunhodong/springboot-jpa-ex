@@ -19,6 +19,7 @@ public class ItemRepository {
         }
         else{
             //이미 DB에 등록된걸 가져온상태
+            //입력파라미터로 들어온 객체의 데이터로 강제로 교체하기때문에 null값도 새로 세팅될수있음(실무에서 잘 안씀)
             em.merge(item);
 
         }
