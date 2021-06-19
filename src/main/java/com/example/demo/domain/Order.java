@@ -1,5 +1,6 @@
 package com.example.demo.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -18,7 +19,10 @@ public class Order {
     @GeneratedValue
     @Column(name = "order_id")
     private Long id;
-    
+
+    @JsonIgnore
+    //지연로딩일 경우 Order를 조회했을떄
+    //member변수에는 프록시객체가 들어간다.
     @ManyToOne(fetch = FetchType.LAZY)
     //member_id가 FK가 된다
     @JoinColumn(name = "member_id")
@@ -39,6 +43,8 @@ public class Order {
     )
     private OrderStatus status;
 
+    @Embedded
+    private Address address;
 
     public static Order createOrder(Member member,Delivery delivery,OrderItem orderItems) {
         Order order = new Order();

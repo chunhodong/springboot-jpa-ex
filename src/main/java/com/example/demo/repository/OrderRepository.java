@@ -24,4 +24,8 @@ public class OrderRepository {
     public List<Order> findAllByString(OrderSearch orderSearch) {
         return null;
     }
+
+    public List<Order> findAllWithMemberDelivery(){
+        return null;
+    }
 }
