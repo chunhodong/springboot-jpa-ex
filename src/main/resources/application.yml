@@ -13,6 +13,10 @@ spring:
       hibernate:
  #       show_sql: true
         format_sql: true
+    #영속성컨텍스트의 생존범위를 @Transactional 어노테이션이있는 클래스로까지로 제한(보통 Service계층)
+    #컨트롤러단까지 지연로딩의 쿼리를 실행할수 없다
+    #값이 true면 영속성컨텍스트(db connection)가 api를 반환할때까지 생존해있음
+    open-in-view: false
 
 logging:
   level:
